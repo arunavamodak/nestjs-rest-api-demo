@@ -1,5 +1,6 @@
 import { Document } from 'mongoose';
+
 export class JobDto extends Document {
-  readonly title: string;
-  readonly salary: number;
+  readonly title: String;
+  readonly salary: Number;
 }

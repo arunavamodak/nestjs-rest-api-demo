@@ -2,11 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { Job } from './interfaces/job.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { threadId } from 'worker_threads';
 
 @Injectable()
 export class JobsService {
   constructor(@InjectModel('Job') private readonly jobModel: Model<Job>) {}
+
+  async findAll(): Promise<Job[]> {
+    return await this.jobModel.find({});
+  }
 
   async find(id: string): Promise<Job> {
     return await this.jobModel.findOne({ _id: id });

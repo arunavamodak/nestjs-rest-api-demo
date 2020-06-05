@@ -15,10 +15,10 @@ import { Job } from './interfaces/job.interface';
 export class JobsController {
   constructor(private readonly jobsService: JobsService) {}
 
-  //   @Get()
-  //   findAll(): string {
-  //     return 'hello';
-  //   }
+  @Get()
+  findAll(): Promise<Job[]> {
+    return this.jobsService.findAll();
+  }
 
   @Get(':id')
   find(@Param('id') id): Promise<Job> {
